@@ -1,0 +1,40 @@
+@startuml main
+
+title IOT Device Observer - Class Diagram
+
+
+abstract class Subject {
+  {abstract} +String attach(String input)
+  {abstract} +void detach()
+  {abstract} +void notify()
+  {abstract} +Map get_state()
+}
+
+abstract class Observer {
+  {abstract} +void update(String subject)
+
+}
+
+enum DeviceStatus{
+  ON
+  OFF
+  REBOOT
+  MOUNTED
+  UNMOUNTED
+  MAINTENANCE
+}
+
+
+
+class Device{
+  + DeviceStatus state
+  + Map observers
+}
+class Dashboard
+
+
+Subject <|-- Device
+Observer <|-- Dashboard
+
+
+@enduml
